@@ -67,6 +67,24 @@ build CMakeFiles/Laba_4.dir/Cars.cpp.obj: CXX_COMPILER__Laba_4_unscanned_Debug C
   OBJECT_DIR = CMakeFiles\Laba_4.dir
   OBJECT_FILE_DIR = CMakeFiles\Laba_4.dir
 
+build CMakeFiles/Laba_4.dir/Engine.cpp.obj: CXX_COMPILER__Laba_4_unscanned_Debug C$:/Oop143/Laba_4/Engine.cpp || cmake_object_order_depends_target_Laba_4
+  DEP_FILE = CMakeFiles\Laba_4.dir\Engine.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Laba_4.dir
+  OBJECT_FILE_DIR = CMakeFiles\Laba_4.dir
+
+build CMakeFiles/Laba_4.dir/People.cpp.obj: CXX_COMPILER__Laba_4_unscanned_Debug C$:/Oop143/Laba_4/People.cpp || cmake_object_order_depends_target_Laba_4
+  DEP_FILE = CMakeFiles\Laba_4.dir\People.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Laba_4.dir
+  OBJECT_FILE_DIR = CMakeFiles\Laba_4.dir
+
+build CMakeFiles/Laba_4.dir/Driver.cpp.obj: CXX_COMPILER__Laba_4_unscanned_Debug C$:/Oop143/Laba_4/Driver.cpp || cmake_object_order_depends_target_Laba_4
+  DEP_FILE = CMakeFiles\Laba_4.dir\Driver.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Laba_4.dir
+  OBJECT_FILE_DIR = CMakeFiles\Laba_4.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Laba_4
@@ -75,7 +93,7 @@ build CMakeFiles/Laba_4.dir/Cars.cpp.obj: CXX_COMPILER__Laba_4_unscanned_Debug C
 #############################################
 # Link the executable Laba_4.exe
 
-build Laba_4.exe: CXX_EXECUTABLE_LINKER__Laba_4_Debug CMakeFiles/Laba_4.dir/main.cpp.obj CMakeFiles/Laba_4.dir/Vehicle.cpp.obj CMakeFiles/Laba_4.dir/Cars.cpp.obj
+build Laba_4.exe: CXX_EXECUTABLE_LINKER__Laba_4_Debug CMakeFiles/Laba_4.dir/main.cpp.obj CMakeFiles/Laba_4.dir/Vehicle.cpp.obj CMakeFiles/Laba_4.dir/Cars.cpp.obj CMakeFiles/Laba_4.dir/Engine.cpp.obj CMakeFiles/Laba_4.dir/People.cpp.obj CMakeFiles/Laba_4.dir/Driver.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Laba_4.dir

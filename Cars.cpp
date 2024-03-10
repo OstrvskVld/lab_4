@@ -1,35 +1,29 @@
 
-
+#include "Engine.h"
 #include "Cars.h"
 #include <iostream>
 
 using namespace std;
 
 Cars::Cars()
-:Vehicle(),CarName(""),CarAge(0),typeOfVehicleBody(""),price(0),mileage(0),AvailabilityOfCar(""){}//default constructor
-Cars::Cars( string CarName, int CarAge,string typeOfVehicleBody,double price, double mileage,  string AvailabilityOfCar)
-: Vehicle(CarName,typeOfVehicleBody,CarAge,AvailabilityOfCar), CarName{CarName},CarAge{CarAge},
-typeOfVehicleBody{typeOfVehicleBody},AvailabilityOfCar{AvailabilityOfCar}, price{price}, mileage{mileage}{};//constructor with parameters
+:Vehicle(),model(""),price(0),mileage(0),engine1(0,0){}//default constructor
+Cars::Cars( string name, string typeOfVehicle, int age, string availability,string model, double price, double mileage,Engine engine1)
+: Vehicle(name,typeOfVehicle,age,availability),model{model}, price{price},mileage{mileage}, engine1(engine1){};//constructor with parameters
 Cars::Cars(const Cars &other)
-:Vehicle(other), CarName(other.CarName), typeOfVehicleBody(other.typeOfVehicleBody), price(other.price), mileage(other.mileage),
-AvailabilityOfCar(other.AvailabilityOfCar), CarAge(other.CarAge)
-{};
+:Vehicle(other), model(other.model), price(other.price), mileage(other.mileage), engine1(other.engine1)
+{}
 Cars Cars::operator=(const Cars &rhs) {
     if (this == &rhs)
         return *this;
     else {
         Cars::operator=(rhs);
-        CarName = rhs.CarName;
-        CarAge = rhs.CarAge;
-        typeOfVehicleBody = rhs.typeOfVehicleBody;
+        model = rhs.model;
         price = rhs.price;
         mileage = rhs.mileage;
-        AvailabilityOfCar = rhs.AvailabilityOfCar;
         return *this;
     }
 }
 ostream &operator<<(ostream &os, const Cars &obj){
-    os<<"Car`s name: "<<obj.CarName<<" Age: "<<obj.CarAge<<"  Type of vehicle body: "<<obj. typeOfVehicleBody
-     <<" Price: "<<obj.price << " Mileage " <<obj.mileage << " Availability of car: " <<obj.AvailabilityOfCar;
+    os<< " Model: " <<obj.model << " Price: "<<obj.price << " Mileage: " <<obj.mileage << obj.engine1;
     return os;
 }

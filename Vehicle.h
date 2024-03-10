@@ -13,6 +13,8 @@ private:
     string availability;
 public:
     Vehicle();
+//    Vehicle(string name); якщо я хочу працювати тільки з неймом
+//    Vehicle(string name, int age);
     Vehicle(string name, string typeOfVehicle, int age, string availability);
     Vehicle(const Vehicle &other);
     Vehicle(Vehicle &&other);

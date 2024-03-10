@@ -7,4 +7,10 @@ add_executable(Laba_4 main.cpp
         Vehicle.cpp
         Vehicle.h
         Cars.cpp
-        Cars.h)
+        Cars.h
+        Engine.cpp
+        Engine.h
+        People.cpp
+        People.h
+        Driver.cpp
+        Driver.h)
