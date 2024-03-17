@@ -6,10 +6,10 @@ using namespace std;
 
 class Engine{
 private:
-    double engineCapacity,power;
+    string engineCapacity,power;
 public:
     Engine();
-    Engine(double engineCapacity,double power);
+    Engine(string engineCapacity,string power);
     Engine(const Engine &other);
     Engine operator=(const Engine &rhs);
     friend ostream &operator<<(ostream &os, const Engine &obj);

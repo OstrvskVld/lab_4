@@ -5,8 +5,8 @@
 using namespace std;
 
 Engine::Engine()
-: Engine(0,0){}
-Engine::Engine(double engineCapacity, double power)
+: Engine("",""){}
+Engine::Engine(string engineCapacity, string power)
 : engineCapacity(engineCapacity), power(power) {}
 Engine::Engine(const Engine &other) {
     engineCapacity = other.engineCapacity;

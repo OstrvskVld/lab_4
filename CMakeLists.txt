@@ -13,4 +13,8 @@ add_executable(Laba_4 main.cpp
         People.cpp
         People.h
         Driver.cpp
-        Driver.h)
+        Driver.h
+        Bike.cpp
+        Bike.h
+        interface.h
+)

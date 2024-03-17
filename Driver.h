@@ -6,15 +6,17 @@
 
 class Driver : public People{
 private:
+
     double number;
     string placeOfResidence;
     Cars ownCar;
 public:
     Driver();
-    Driver(string name, int age, double salary,double number,string placeOfResidence,Cars ownCar);
+    Driver(string name, int age, double salary,int sal,double number,string placeOfResidence,Cars ownCar);
     friend ostream &operator <<(ostream &os,const Driver &obj);
     Driver operator=(const Driver& rhs);
-    ~Driver(){};
+    //virtual void Salary() override;
+    virtual ~Driver(){};
 };
 
 

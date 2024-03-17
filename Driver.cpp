@@ -6,8 +6,8 @@ using namespace std;
 
 Driver::Driver()
 : People(), number(0), placeOfResidence(""), ownCar("","",0,"","",0,0,Engine()){};
-Driver::Driver(string name, int age, double salary, double number, string placeOfResidence, Cars ownCar)
-: People (name, age,  salary), number{number}, placeOfResidence{placeOfResidence},ownCar(ownCar) {};
+Driver::Driver(string name, int age, double salary, int sal, double number, string placeOfResidence, Cars ownCar)
+: People (name, age,  salary, sal), number{number}, placeOfResidence{placeOfResidence},ownCar(ownCar) {};
 Driver Driver::operator=(const Driver &rhs) {
     if (this == &rhs)
         return *this;

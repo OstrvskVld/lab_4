@@ -9,12 +9,14 @@ protected:
     string name;
     int age;
     double salary;
+    int sal;
 public:
     People();
-    People(string name, int age, double salary);
+    People(string name, int age, double salary,int sal);
     friend ostream &operator <<(ostream &os,const People &obj);
     People operator=(const People& rhs);
-    ~People(){};
+    virtual void Salary() final;
+    virtual ~People(){};
 };
 
 
