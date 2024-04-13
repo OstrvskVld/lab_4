@@ -4,11 +4,14 @@
 #include "Vehicle.h"
 #include "Engine.h"
 #include <iostream>
+#include "Functions.h"
 
 using namespace std;
 
 class Cars : public Vehicle {
 private:
+
+
     string model;
     double price;
     double mileage;
@@ -17,9 +20,14 @@ public:
     Cars();
 //    Cars(string name): Vehicle(name){}; якщо я хочу працювати тільки з неймом
 // приклад Cars(string name, int age) : Vehicle(name,age){};
+    Cars(string name, string typeOfVehicle, int age, string availability, string del, string model, double price,
+         double mileage);
+
+    Cars(string name, string typeOfVehicle, int age, string availability, string del, string model);
     Cars(string name, string typeOfVehicle, int age, string availability,string model, double price, double mileage, Engine engine1);
     Cars(string name, string typeOfVehicle, int age, string availability, int del,string model, double price, double mileage);
     Cars(string name, string typeOfVehicle, int age, string availability, int del,string model);
+    Cars(Vehicle vehic, string typeOfVehicle, int age, string model, double price, double mileage, Engine engine1);
     Cars(const Cars &other);
     friend ostream &operator <<(ostream &os,const Cars &obj);
     Cars operator=(const Cars& rhs);

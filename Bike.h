@@ -7,15 +7,17 @@
 class Bike : public Vehicle{
 private:
     string color;
-    int cost;
+    double cost;
 public:
     Bike();
-    Bike(string name,string typeOfVehicle,int age,string availability,string color,int cost);
+    Bike(string name,string typeOfVehicle,int age,string availability,string color,double cost);
+    Bike(Vehicle vehic,string typeOfVehicle, string color,double cost);
     Bike(const Bike &other);
     friend ostream &operator <<(ostream &os,const Bike &obj);
     Bike operator=(const Bike& rhs);
     virtual void GetVehicle () const override;
     virtual ~Bike() override {};
+    string typeOfVehicle;
 };
 
 

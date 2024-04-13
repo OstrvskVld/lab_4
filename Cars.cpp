@@ -8,13 +8,14 @@ using namespace std;
 
 Cars::Cars()
         :Vehicle(),model(""),price(0),mileage(0),engine1("",""){}//default constructor
-Cars::Cars( string name, string typeOfVehicle, int age, string availability,int del,string model, double price, double mileage)
+Cars::Cars( string name, string typeOfVehicle, int age, string availability,string del, string model, double price, double mileage)
         : Vehicle(name,typeOfVehicle,age,availability,del),model{model}, price{price},mileage{mileage}{};//constructor with parameters
+Cars::Cars(Vehicle vehic, std::string typeOfVehicle, int age, std::string model, double price, double mileage,
+           Engine engine1){};
 
 Cars::Cars( string name, string typeOfVehicle, int age, string availability,string model, double price, double mileage,Engine engine1)
         : Vehicle(name,typeOfVehicle,age,availability),model{model}, price{price},mileage{mileage}, engine1(engine1){};//constructor with parameters
-
-Cars::Cars( string name, string typeOfVehicle, int age, string availability, int del,string model)
+Cars::Cars( string name, string typeOfVehicle, int age, string availability, string del,string model)
         : Vehicle(name,typeOfVehicle,age,availability,del),model{model}{};//constructor with parameters
 Cars::Cars(const Cars &other)
 :Vehicle(other), model(other.model), price(other.price), mileage(other.mileage), engine1(other.engine1)
@@ -38,7 +39,7 @@ ostream &operator<<(ostream &os, const Cars &obj){
 void Cars::Delivery() const {
     Vehicle::GetVehicle();
     Vehicle::Delivery();
-    cout << "Model: " << model;
+    cout << "Model: " << model <<endl;
 }
 
 void Cars::GetVehicle() const {

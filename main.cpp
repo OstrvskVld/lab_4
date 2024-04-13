@@ -5,57 +5,91 @@
 #include "Driver.h"
 #include "Bike.h"
 #include "interface.h"
+#include "Functions.h"
+#include "WrongType.h"
+#include "WrongPassword.h"
+
 
 using namespace std;
 
-
+Cars car("","",0,"","","");
+Vehicle vehicle("","",0,"","");
+Bike bike(vehicle,"","",0);
+People personal("",0,0,"");
 
 int main() {
-    Interface1 interface;
-    Vehicle General("Daewoo", "Car", 2003, "Yes");
-    cout << General << endl;
-    Engine lanosPower("8.0", "666");
-    Engine bmw("6.6","634");
-    Cars class_car("Daewoo", "Car", 2003, "Yes", "Lanos", 2900, 187000, lanosPower);
-    cout << class_car << endl;
-    People prof("Lisa", 18, 3400,1);
-    cout << prof << endl;
-    prof.Salary();
-    Driver fastfur ("Anton",18,3400,2,26,"Zaporizhzhia",class_car);
-    cout << fastfur << endl;
-    Vehicle AutoMove = move(General);
-    cout << General << endl << AutoMove << endl;
-    Vehicle VehicleNew{General};
-    cout <<  General << endl << endl << endl;
-    Vehicle *transbike = new Bike("Atlantic","Bike",2022,"Yes","Red",1000);
-    Vehicle *transcar = new Cars("BMW","Car",2005,"No","525",11000,231000,bmw);
-    Vehicle *transdel = new Cars("Mercedes","Car",2023,"No",1,"E-class");
-    transbike->GetVehicle();
-    transcar->GetVehicle();
-    transdel->Delivery();
+    cout << " Welcome to the vehicle salon! " << endl << endl;
+    cout << " Who are you? " << endl << " Enter A if you are the Admin " << endl << " Enter U if you are the User ";
+    Probels();
+    char cont;
+    cin >> cont;
+    try {
+        if (cont != 'A' && cont != 'U')
+            throw WrongType();
+        if (cont == 'A')
+        {
+            string password,login;
+            cout << " Enter password! ";
+            Probels();
+            cin >> password;
+            try {
+                if (password != "vlad143") {
+                    throw WrongPassword();
+                }
+                else{
+                    while (true) {
+                        Probels();
+                        cout << "Choose function!" << endl;
+                        cout << "A - Add VEHICLE" << endl;
+                        cout << "B - Add PERSONAL" << endl;
+                        cout << "C - Show information of PERSONAL" << endl;
+                        cout << "D - Show information of VEHICLE" << endl;
+                        cout << "E - Exit!" << endl;
+                        Probels();
 
-    Bike bike("Corso","Bike",2019,"No","Black",1200);
-    Vehicle vehicle("Revox","Bike",2021,"Yes",2);
-    Vehicle &vehicle1 = bike;
-    vehicle1.GetVehicle();
-    vehicle.GetVehicle();
-    interface.A1();
-    cout<<AutoMove;
-    interface.A2();
-    transcar->GetVehicle();
-    interface.A3();
-    cout<<prof;
-    interface.A4();
-    cout<<fastfur;
-    interface.A5();
-    transbike->GetVehicle();
+                        char choice;
+                        cin >> choice;
+                        try{
+                            if (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'Q' && choice != 'D')
+                                throw WrongType();
+                                else{
+                                while (true){
+                                    switch (choice) {
+                                        case 'A' : { //Add VEHICLE
+                                            AddVehicle(vehicle);
+                                            break;
+                                        }
+                                        case 'B' : {//Add Personal
+                                            AddPersonal(personal);
+                                            break;
+                                        }
+                                        case 'C' : {//Show information of personal
+                                            ReadPersonal(personal);
+                                            break;
+                                        }
+                                        case 'E' : {//Exit
+                                            return 0;
+                                        }
 
-    delete transbike;
-    delete transcar;
-    delete transdel;
+                                    }
+                                }
+                                }
+                            }
+                        catch (WrongPassword &A){
+                            cerr << A.what();
+                        }
+                    }
+                }
 
-
-
+            }
+            catch (WrongPassword &A){
+                cerr << A.what();
+            }
+        }
+    }
+catch (WrongType &A){
+    cerr << A.what();
+}
 }
 
 

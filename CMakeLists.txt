@@ -17,4 +17,9 @@ add_executable(Laba_4 main.cpp
         Bike.cpp
         Bike.h
         interface.h
+        Functions.cpp
+        Functions.h
+        WrongType.h
+        WrongPassword.h
+        AnotherVariant.h
 )

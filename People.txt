@@ -1,0 +1,6 @@
+ What is the employee`s name? Vlad Age: 19 Amount of salary: 19000 Salary is/is not received? No	
+ What is the employee`s name? Vlad Age: 19 Amount of salary: 23000 Salary is/is not received? Yes	
+ What is the employee`s name? Vlad Age: 19 Amount of salary: 22000 Salary is/is not received? Yes	
+ What is the employee`s name? Vlad Age: 19 Amount of salary: 13000 Salary is/is not received? Yes	
+ What is the employee`s name? Vlad Age: 19 Amount of salary: 25000 Salary is/is not received? Yes	
+ What is the employee`s name? sdg Age: 346 Amount of salary: 34 Salary is/is not received? dfg	
