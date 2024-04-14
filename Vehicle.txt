@@ -1,9 +1,1 @@
- What is the name of the transport? BMW Is it possible to bring from abroad? Yes Is it available: Yes	
- What is the name of the transport? BMW Is it possible to bring from abroad? Yes Is it available: Yes	
- What is the name of the transport? Mercedes Is it possible to bring from abroad? Yes Is it available: No	
- What is the name of the transport? fgb Is it possible to bring from abroad? fgh Is it available: fgh	
- What is the name of the transport? dfg Is it possible to bring from abroad? dfg Is it available: dfg	
- What is the name of the transport? Bmx Is it possible to bring from abroad? No Is it available: Yes	
- What is the name of the transport? Bmx Is it possible to bring from abroad? Yes Is it available: Yes	
- What is the name of the transport? bmx Is it possible to bring from abroad? yes Is it available: yes	
- What is the name of the transport? dfb Is it possible to bring from abroad? df Is it available: df	
+ What is the name of the transport? Mercedes Is it possible to bring from abroad? No Is it available: Yes Enter age of car: 2005 What is type of vehicle? Car	

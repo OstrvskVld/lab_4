@@ -32,17 +32,19 @@ Cars Cars::operator=(const Cars &rhs) {
     }
 }
 ostream &operator<<(ostream &os, const Cars &obj){
-    os<< " Model: " <<obj.model << " Price: "<<obj.price << " Mileage: " <<obj.mileage << obj.engine1;
+    os<< " Enter age of car: " << Vehicle{obj.age} << " Enter model of car: " <<obj.model
+    << " Enter price of car: " <<obj.price << " Enter milleage of car: " <<obj.mileage  << " Enter engine capacity of car: "
+    << Engine{obj.engine1.engineCapacity,obj.engine1.power} << "  Enter power of car: " << Engine{obj.engine1.engineCapacity,obj.engine1.power};
     return os;
 }
 
-void Cars::Delivery() const {
-    Vehicle::GetVehicle();
-    Vehicle::Delivery();
-    cout << "Model: " << model <<endl;
-}
+//void Cars::Delivery() const {
+//    Vehicle::GetVehicle();
+//    Vehicle::Delivery();
+//    cout << "Model: " << model <<endl;
+//}
 
-void Cars::GetVehicle() const {
-    Vehicle::GetVehicle();
-    cout<< " Model: " <<model << " Price: "<<price << " Mileage: " <<mileage << engine1 << " Car " << "\n";
-}
+//void Cars::GetVehicle() const {
+//    Vehicle::GetVehicle();
+//    cout<< " Model: " <<model << " Price: "<<price << " Mileage: " <<mileage << engine1 << " Car " << "\n";
+//}

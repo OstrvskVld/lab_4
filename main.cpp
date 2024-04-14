@@ -8,7 +8,8 @@
 #include "Functions.h"
 #include "WrongType.h"
 #include "WrongPassword.h"
-
+#include "memory"
+#include "AnotherVariant.h"
 
 using namespace std;
 
@@ -26,17 +27,15 @@ int main() {
     try {
         if (cont != 'A' && cont != 'U')
             throw WrongType();
-        if (cont == 'A')
-        {
-            string password,login;
+        if (cont == 'A') {
+            string password;
             cout << " Enter password! ";
             Probels();
             cin >> password;
             try {
                 if (password != "vlad143") {
                     throw WrongPassword();
-                }
-                else{
+                } else {
                     while (true) {
                         Probels();
                         cout << "Choose function!" << endl;
@@ -49,11 +48,12 @@ int main() {
 
                         char choice;
                         cin >> choice;
-                        try{
-                            if (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'Q' && choice != 'D')
+                        try {
+                            if (choice != 'A' && choice != 'B' && choice != 'C' && choice != 'Q' && choice != 'D' &&
+                                choice != 'E')
                                 throw WrongType();
-                                else{
-                                while (true){
+                            else {
+                                while (true) {
                                     switch (choice) {
                                         case 'A' : { //Add VEHICLE
                                             AddVehicle(vehicle);
@@ -67,29 +67,76 @@ int main() {
                                             ReadPersonal(personal);
                                             break;
                                         }
+                                        case 'D' : {//Show information of vehicle
+                                            ReadVehicle(vehicle);
+                                        }
                                         case 'E' : {//Exit
                                             return 0;
                                         }
 
                                     }
                                 }
-                                }
                             }
-                        catch (WrongPassword &A){
+                        }
+                        catch (WrongPassword &A) {
                             cerr << A.what();
                         }
                     }
                 }
 
             }
-            catch (WrongPassword &A){
+            catch (WrongPassword &A) {
                 cerr << A.what();
+            }
+        }
+        if (cont == 'U') {
+            string name, surname;
+            cout << "Hello user";
+            Probels();
+            cout << "You need to authorize" << endl;
+            cout << "Enter your name: " << endl;
+            cin >> name;
+            cout << "Enter your surname:" << endl;
+            cin >> surname;
+            while (true) {
+                Probels();
+                cout << "Chose what do you want:" << endl;
+                cout << "A - Show information of vehicle " << endl;
+                cout << "B - Buy the vehicle " << endl;
+                cout << "press Q - if you want to stop";
+                Probels();
+
+                char choice;
+                cin >> choice;
+                try {
+                    if (choice != 'A' && choice != 'B' && choice != 'Q')
+                        throw WrongType();
+                    switch (choice) {
+                        case 'A' : {
+                            ReadVehicle(vehicle);
+                        }
+                        case 'B' :{
+                            BuyACar(vehicle);
+                        }
+
+                        case 'Q' : {
+                            return 0;
+                        }
+                    }
+
+                }
+                catch (AnotherVariant &A) {
+                    cerr << A.what();
+                }
             }
         }
     }
 catch (WrongType &A){
     cerr << A.what();
 }
+    catch (WrongPassword &A) {
+        cerr << A.what();
+    }
 }
 
 

@@ -6,11 +6,12 @@ using namespace std;
 
 Vehicle::Vehicle()
 : Vehicle("","",0,"",""){}
+Vehicle::Vehicle(double age) : age{age} {}
 Vehicle::Vehicle(std::string name, std::string availability, string del)
 : name(name), age(age), availability(availability), del(del){}
-Vehicle::Vehicle(string name, string typeOfVehicle, int age, string availability)
+Vehicle::Vehicle(string name, string typeOfVehicle, double age, string availability)
         : name(name), typeOfVehicle(typeOfVehicle), age(age), availability(availability) {}
-Vehicle::Vehicle(string name, string typeOfVehicle, int age, string availability,string del)
+Vehicle::Vehicle(string name, string typeOfVehicle, double age, string availability,string del)
 : name(name), typeOfVehicle(typeOfVehicle), age(age), availability(availability), del(del) {}
 Vehicle::Vehicle(const Vehicle &other) {
 name=other.name;
@@ -41,28 +42,27 @@ Vehicle Vehicle::operator=(const Vehicle &rhs) {
     }
 }
 ostream &operator<<(ostream &os, const Vehicle &obj){
-    os<<" What is the name of the transport? "<<obj.name<<" Is it possible to bring from abroad? "<<obj.del
-    <<" Is it available: "<<obj.availability;
+    os<<obj.name<<obj.del<<obj.availability << obj.age <<  obj.typeOfVehicle;
     return os;
 }
 
-void Vehicle::Delivery() const {
-    if (del == "1") {
-        cout << " Transport can be delivered ";
-    }
-    if (del == "2") {
-        cout << " Transport can be delivered ";
-    }
-}
+//void Vehicle::Delivery() const {
+//    if (del == "1") {
+//        cout << " Transport can be delivered ";
+//    }
+//    if (del == "2") {
+//        cout << " Transport can be delivered ";
+//    }
+//}
 
-void Vehicle::GetVehicle() const {
-    cout << " Name of transport: " << name << " Year of release: " << age << " Type of transport: "
-         << typeOfVehicle << " Is it available: " << availability << "  " << endl;
-
-}
-string Vehicle::GetVehic() {
-    cout << " What is the name of the transport? " << name<< " Is it possible to bring from abroad " << del
-    << " Is it available: " << availability << "  " << endl;
-}
+//void Vehicle::GetVehicle() const {
+//    cout << " Name of transport: " << name << " Year of release: " << age << " Type of transport: "
+//         << typeOfVehicle << " Is it available: " << availability << "  " << endl;
+//
+//}
+//string Vehicle::GetVehic() {
+//    cout << " What is the name of the transport? " << name<< " Is it possible to bring from abroad " << del
+//    << " Is it available: " << availability << "  " << endl;
+//}
 
 

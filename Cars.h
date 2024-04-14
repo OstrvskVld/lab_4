@@ -9,9 +9,7 @@
 using namespace std;
 
 class Cars : public Vehicle {
-private:
-
-
+protected:
     string model;
     double price;
     double mileage;
@@ -31,8 +29,8 @@ public:
     Cars(const Cars &other);
     friend ostream &operator <<(ostream &os,const Cars &obj);
     Cars operator=(const Cars& rhs);
-    void GetVehicle() const override;
-    void Delivery() const override;
+//    void GetVehicle() const override;
+//    void Delivery() const override;
     virtual ~Cars() override {};
 };
 

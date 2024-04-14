@@ -5,7 +5,7 @@
 using namespace std;
 
 class Engine{
-private:
+public:
     string engineCapacity,power;
 public:
     Engine();

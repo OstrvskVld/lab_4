@@ -20,8 +20,7 @@ People People::operator=(const People &rhs) {
     }
 }
 ostream &operator<<(ostream &os, const People &obj){
-    os<<" What is the employee`s name? "<<obj.name<<" Age: "<<obj.age<<" Amount of salary: "
-     <<obj.salary << " Salary is/is not received? " << obj.sal;
+    os <<obj.name << "\t" <<obj.age <<  "\t" <<obj.salary <<  "\t"  << obj.sal <<  "\t";
     return os;
 }
 
@@ -36,5 +35,3 @@ ostream &operator<<(ostream &os, const People &obj){
 //
 //    }
 //}
-
-

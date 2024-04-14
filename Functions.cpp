@@ -10,6 +10,7 @@
 #include "AnotherVariant.h"
 #include "People.h"
 #include "Driver.h"
+#include "vector"
 
 
 
@@ -23,70 +24,84 @@ void Probels(){
 void AddVehicle(Vehicle &vehicle) {
     cout << " You want to add new vehicle: " << endl;
     cout << " What is the name of the transport? " << endl;
-    unique_ptr<string> nam{new string{""}};
+    shared_ptr<string> nam{new string{""}};
     cin >> *nam;
     cout << " Is it available? " << endl;
-    unique_ptr<string> aval{new string{""}};
+    shared_ptr<string> aval{new string{""}};
     cin >> *aval;
     cout << " Is it possible to bring from abroad? " << endl;
-    unique_ptr<string> deliv{new string{""}};
+    shared_ptr<string> deliv{new string{""}};
     cin >> *deliv;
-    Vehicle vehic(*nam, *aval, *deliv);
+    cout << " Enter age of vehicle: " << endl;
+    shared_ptr<double> age{new double{0}};
+    cin >> *age;
+    cout << " Type of vehicle: " << endl;
+    shared_ptr<string> typeOfVehicle{new string{""}};
+    cin >> *typeOfVehicle;
+    if (*aval == "No" && *deliv == "No")
+       throw AnotherVariant();
+    Vehicle vehic(*nam, *typeOfVehicle, *age, *aval, *deliv);
     ofstream foutVe(R"(C:\Oop143\Laba_4\Vehicle.txt)",
                     ios_base::app);
     foutVe << vehic << "\t" << endl;
     foutVe.close();
     Probels();
-    if (*aval == "No" && *deliv == "No")
-        throw AnotherVariant();
-
-    string choic;
-    cout << " Enter type of vehicle " << endl;
-    try {
-        cin >> choic;
-        if (choic != "Car" && choic != "Bike")
-            throw AnotherVariant();
-        if (choic == "Car") {
-            unique_ptr<int> ag{new int{0}};
-            cout << " Enter age of car: " << endl;
-            cin >> *ag;
-            unique_ptr<string> mod{new string{""}};
-            cout << " Enter model of car: " << endl;
-            cin >> *mod;
-            unique_ptr<double> price{new double{0}};
-            cout << " Enter price of car: " << endl;
-            cin >> *price;
-            unique_ptr<double> milleage{new double{0}};
-            cout << " Enter milleage of car: " << endl;
-            cin >> *milleage;
-            unique_ptr<string> engine{new string{""}};
-            cout << " Enter engine capacity of car: " << endl;
-            cin >> *engine;
-            unique_ptr<string> power{new string{""}};
-            cout << " Enter power of car: " << endl;
-            cin >> *power;
-            Cars Car(vehic, choic, *ag, *mod, *price, *milleage, {*engine, *power});
-            ofstream foutCar("C:\\Oop143\\Laba_4\\Car.txt",
-                             ios_base::app);
-            foutCar << Car << "\t" << endl;
-            foutCar.close();
-            Probels();
-        }
-        if (choic == "Bike") {
-            unique_ptr<string> col{new string{""}};
-            cout << " Color of bike: " << endl;
-            cin >> *col;
-            unique_ptr<double> cost{new double{0}};
-            cout << " Enter cost of bike: " << endl;
-            cin >> *cost;
-            Bike bik(vehic, choic, *col, *cost);
-            ofstream foutBike("C:\\Oop143\\Laba_4\\Bike.txt",
-                              ios_base::app);
-            foutBike << bik.GetVehic() << "\t" << endl;
-            foutBike.close();
-            Probels();
-        }
-    }
+}
+//    if (*aval == "No" && *deliv == "No")
+//        throw AnotherVariant();
+//
+//    string choic;
+//    cout << " Enter type of vehicle " << endl;
+//    try {
+//        cin >> choic;
+//        if (choic != "Car" && choic != "Bike")
+//            throw AnotherVariant();
+//        if (choic == "Car") {
+//            shared_ptr<int> ag{new int{0}};
+//            cout << " Enter age of car: " << endl;
+//            cin >> *ag;
+//            shared_ptr<string> mod{new string{""}};
+//            cout << " Enter model of car: " << endl;
+//            cin >> *mod;
+//            shared_ptr<double> price{new double{0}};
+//            cout << " Enter price of car: " << endl;
+//            cin >> *price;
+//            shared_ptr<double> milleage{new double{0}};
+//            cout << " Enter milleage of car: " << endl;
+//            cin >> *milleage;
+//            shared_ptr<string> engine{new string{""}};
+//            cout << " Enter engine capacity of car: " << endl;
+//            cin >> *engine;
+//            shared_ptr<string> power{new string{""}};
+//            cout << " Enter power of car: " << endl;
+//            cin >> *power;
+//            Cars Car(vehic, choic, *ag, *mod, *price, *milleage, {*engine, *power});
+//            ofstream foutCar("C:\\Oop143\\Laba_4\\Car.txt",
+//                             ios_base::app);
+//            foutCar << Car << "\t" << endl;
+//            foutCar.close();
+//            Probels();
+//        }
+//        if (choic == "Bike") {
+//            shared_ptr<string> col{new string{""}};
+//            cout << " Color of bike: " << endl;
+//            cin >> *col;
+//            shared_ptr<double> cost{new double{0}};
+//            cout << " Enter cost of bike: " << endl;
+//            cin >> *cost;
+//            Bike bik(vehic, choic, *col, *cost);
+//            ofstream foutBike("C:\\Oop143\\Laba_4\\Bike.txt",
+//                              ios_base::app);
+//            foutBike << bik << "\t" << endl;
+//            foutBike.close();
+//            Probels();
+//        }
+//    }
+//    catch (AnotherVariant &A) {
+//        cerr << A.what();
+//    }
+//
+//    }
 //    cin >> choic;
 //    if (choic != "Car" && choic != "Bike")
 //        throw AnotherVariant();
@@ -130,12 +145,9 @@ void AddVehicle(Vehicle &vehicle) {
 //            foutBike.close();
 //            Probels();
 //        }
-        catch (AnotherVariant &A){
-            cerr << A.what();
-        }
-    }
+//    }
 //    if (choic == "Car") {
-//        while (true){
+//        while (true) {
 //            shared_ptr<int> ag{new int{0}};
 //            cout << " Enter age of car: " << endl;
 //            cin >> *ag;
@@ -161,8 +173,7 @@ void AddVehicle(Vehicle &vehicle) {
 //            foutCar.close();
 //            Probels();
 //        }
-//    } else
-//    if (choic == "Bike") {
+//    } else if (choic == "Bike") {
 //        shared_ptr<string> col{new string{""}};
 //        cout << " Color of bike: " << endl;
 //        cin >> *col;
@@ -172,12 +183,13 @@ void AddVehicle(Vehicle &vehicle) {
 //        Bike bik(vehic, choic, *col, *cost);
 //        ofstream foutBike(R"(C:\Oop143\Laba_4\Bike.txt)",
 //                          ios_base::app);
-//        foutBike << bik << "\t"  << endl;
+//        foutBike << bik << "\t" << endl;
 //        foutBike.close();
-//    }
-//    else{
+//    } else {
 //        throw std::runtime_error("Error: try again");
 //    }
+//}
+
 void AddPersonal(People &people){
     cout << " You want to add new person: " << endl;
     cout << " What is the employee`s name? " << endl;
@@ -200,28 +212,28 @@ void AddPersonal(People &people){
     Probels();
 
 
-    string inf;
-    cout << " If you want to know more information, press 'Q'. If not, press 'E' " << endl;
-    cin >> inf;
-    if (inf != "Q" && inf != "E")
-        throw AnotherVariant();
-    if (inf == "Q"){
-        cout << " Detailed information: " << endl;
-        cout << " Phone number: " << endl;
-        unique_ptr <double> phone{new double {0}};
-        cin >> *phone;
-        cout << " Place of residence: " << endl;
-        unique_ptr <string> residence {new string {""}};
-        cin >> *residence;
-        Driver pers(pepl,*phone,*residence);
-        ofstream foutpers(R"(C:\Oop143\Laba_4\People.txt)",
-                            ios_base::app);
-        foutpers << pers << "\t" << endl;
-        foutpers.close();
-        Probels();
-    } else if (inf == "E")
-        //закінчити...
-        throw runtime_error("Exiting from choice");
+//    string inf;
+//    cout << " If you want to know more information, press 'Q'. If not, press 'E' " << endl;
+//    cin >> inf;
+//    if (inf != "Q" && inf != "E")
+//        throw AnotherVariant();
+//    if (inf == "Q"){
+//        cout << " Detailed information: " << endl;
+//        cout << " Phone number: " << endl;
+//        shared_ptr <double> phone{new double {0}};
+//        cin >> *phone;
+//        cout << " Place of residence: " << endl;
+//        shared_ptr <string> residence {new string {""}};
+//        cin >> *residence;
+//        Driver pers(pepl,*phone,*residence);
+//        ofstream foutpers(R"(C:\Oop143\Laba_4\People.txt)",
+//                            ios_base::app);
+//        foutpers << pers << "\t" << endl;
+//        foutpers.close();
+//        Probels();
+//    } else if (inf == "E")
+//        //закінчити...
+//        throw runtime_error("Exiting from choice");
 
 }
 void ReadPersonal(People &people){
@@ -234,13 +246,86 @@ void ReadPersonal(People &people){
     shared_ptr <int> ag{new int {0}};
     shared_ptr <double> sal{new double {0}};
     shared_ptr <string> ifsal{new string {""}};
-    unique_ptr <double> phone{new double {0}};
-    unique_ptr <string> residence {new string {""}};
-    while (finE >> *nam >> *ag >> *sal >> *ifsal >> *phone >> *residence){
-        cout << *nam <<" " << *ag << "\t" << *sal << "\t" << *ifsal << "\t" << *phone << "\t" << *residence << endl;
+//    shared_ptr <double> phone{new double {0}};
+//    shared_ptr <string> residence {new string {""}};
+    while (finE >> *nam >> *ag >> *sal >> *ifsal){ //*phone >> *residence){
+        cout << *nam <<" " << *ag << "\t" << *sal << "\t" << *ifsal << "\t" << endl;//*phone << "\t" << *residence << endl;
+    }
+
+
+    finE.close();
+}
+
+void ReadVehicle(Vehicle &vehicle){
+    ifstream finE(R"(C:\Oop143\Laba_4\Vehicle.txt)");
+    if (!finE.is_open()) {
+        cerr << "Error opening file: " << endl;
+    }
+    shared_ptr<string> nam{new string{""}};
+    shared_ptr<string> aval{new string{""}};
+    shared_ptr<string> deliv{new string{""}};
+    shared_ptr<double> age{new double{0}};
+    shared_ptr<string> typeOfVehicle{new string{""}};
+    while(finE >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle){
+        cout << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle << " " << endl;
     }
     finE.close();
 }
+
+void BuyACar(Vehicle &vehicle) {
+    while (true) {
+        cout << " You want to buy a vehicle: " << endl;
+        cout << " Choose which vehicle you want to buy: " << endl;
+        ifstream finE(R"(C:\Oop143\Laba_4\Vehicle.txt)");
+        if (!finE.is_open()) {
+            cerr << "Error opening file: " << endl;
+        } else {
+            shared_ptr<int> numb{new int{0}};
+            shared_ptr<string> nam{new string{""}};
+            shared_ptr<string> aval{new string{""}};
+            shared_ptr<string> deliv{new string{""}};
+            shared_ptr<double> age{new double{0}};
+            shared_ptr<string> typeOfVehicle{new string{""}};
+            while (finE >> *numb >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle) {
+                cout << *numb << " " << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle
+                     << " "
+                     << endl;
+
+                finE.close();
+                if (numb != 0) {
+                    Vehicle vehic(*nam, *typeOfVehicle, *age, *aval, *deliv);
+                    vector<int> numbers;
+                    ifstream finCar
+                            ("C:\Oop143\Laba_4\Purchase.txt");
+                    if (!finCar.is_open())
+                        cerr << "Error.";
+                    else {
+                        while (finCar >> *nam >> *aval >> *age >> *aval >> *deliv) {
+                            numbers.push_back(*numb);
+                        }
+                        finCar.close();
+                        ofstream foutCar("C:\Oop143\Laba_4\Purchase.txt");
+                        for (int i = 0; i < numbers.size(); ++i) {
+                            if (numbers[i] != *numb) {
+                                foutCar << numbers[i] << endl;
+                            } else {
+                                foutCar << vehic << "\t" << endl;
+                                ofstream foutPur(R"(C:\Oop143\Laba_4\Purchase.txt)", ios_base::app);
+                                foutPur << numbers[i] << "\t" << endl;
+                            }
+
+                        }
+                        foutCar.close();
+                    }
+                }
+            }
+            finE.close();
+        }
+    }
+    while (false)
+    cerr<<"ERROR";
+}
+
 
 
 
