@@ -1,1 +1,4 @@
- What is the name of the transport? Mercedes Is it possible to bring from abroad? No Is it available: Yes Enter age of car: 2005 What is type of vehicle? Car	
+BMW	Yes	YEs	2005	Car
+	
+Mercedes	No	Yes	2019	Car
+	

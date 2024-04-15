@@ -1,0 +1,2 @@
+Lisa	18	15000	No		
+Vlad	19	34000	Yes		

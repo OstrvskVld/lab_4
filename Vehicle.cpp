@@ -42,7 +42,7 @@ Vehicle Vehicle::operator=(const Vehicle &rhs) {
     }
 }
 ostream &operator<<(ostream &os, const Vehicle &obj){
-    os<<obj.name<<obj.del<<obj.availability << obj.age <<  obj.typeOfVehicle;
+    os<<obj.name << "\t"<<obj.del <<"\t"<<obj.availability << "\t" << obj.age << "\t"<< obj.typeOfVehicle<< endl;
     return os;
 }
 

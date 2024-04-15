@@ -248,11 +248,10 @@ void ReadPersonal(People &people){
     shared_ptr <string> ifsal{new string {""}};
 //    shared_ptr <double> phone{new double {0}};
 //    shared_ptr <string> residence {new string {""}};
-    while (finE >> *nam >> *ag >> *sal >> *ifsal){ //*phone >> *residence){
-        cout << *nam <<" " << *ag << "\t" << *sal << "\t" << *ifsal << "\t" << endl;//*phone << "\t" << *residence << endl;
+    while (finE >> *nam >> *ag >> *sal >> *ifsal) { //*phone >> *residence){
+        cout << *nam << " " << *ag << "\t" << *sal << "\t" << *ifsal << "\t"
+             << endl;//*phone << "\t" << *residence << endl;
     }
-
-
     finE.close();
 }
 
@@ -264,67 +263,89 @@ void ReadVehicle(Vehicle &vehicle){
     shared_ptr<string> nam{new string{""}};
     shared_ptr<string> aval{new string{""}};
     shared_ptr<string> deliv{new string{""}};
-    shared_ptr<double> age{new double{0}};
+    shared_ptr<double> age{new double{0.0}};
     shared_ptr<string> typeOfVehicle{new string{""}};
-    while(finE >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle){
-        cout << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle << " " << endl;
+    while(finE >> *nam >> *deliv >> *aval >> *age >> *typeOfVehicle){
+        cout << *nam << "\t" << *deliv << "\t" << *aval << "\t" << *age << "\t" << *typeOfVehicle << "\t" << endl;
     }
     finE.close();
 }
 
 void BuyACar(Vehicle &vehicle) {
-    while (true) {
-        cout << " You want to buy a vehicle: " << endl;
-        cout << " Choose which vehicle you want to buy: " << endl;
-        ifstream finE(R"(C:\Oop143\Laba_4\Vehicle.txt)");
-        if (!finE.is_open()) {
-            cerr << "Error opening file: " << endl;
-        } else {
-            shared_ptr<int> numb{new int{0}};
-            shared_ptr<string> nam{new string{""}};
-            shared_ptr<string> aval{new string{""}};
-            shared_ptr<string> deliv{new string{""}};
-            shared_ptr<double> age{new double{0}};
-            shared_ptr<string> typeOfVehicle{new string{""}};
-            while (finE >> *numb >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle) {
-                cout << *numb << " " << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle
-                     << " "
-                     << endl;
+    cout << " You want to buy a vehicle: " << endl;
+    cout << " Choose which vehicle you want to buy: " << endl;
+    ifstream finE(R"(C:\Oop143\Laba_4\Vehicle.txt)");
+    if (!finE.is_open())
+        cerr << "Error opening file: " << endl;
 
-                finE.close();
-                if (numb != 0) {
-                    Vehicle vehic(*nam, *typeOfVehicle, *age, *aval, *deliv);
-                    vector<int> numbers;
-                    ifstream finCar
-                            ("C:\Oop143\Laba_4\Purchase.txt");
-                    if (!finCar.is_open())
-                        cerr << "Error.";
-                    else {
-                        while (finCar >> *nam >> *aval >> *age >> *aval >> *deliv) {
-                            numbers.push_back(*numb);
-                        }
-                        finCar.close();
-                        ofstream foutCar("C:\Oop143\Laba_4\Purchase.txt");
-                        for (int i = 0; i < numbers.size(); ++i) {
-                            if (numbers[i] != *numb) {
-                                foutCar << numbers[i] << endl;
-                            } else {
-                                foutCar << vehic << "\t" << endl;
-                                ofstream foutPur(R"(C:\Oop143\Laba_4\Purchase.txt)", ios_base::app);
-                                foutPur << numbers[i] << "\t" << endl;
-                            }
 
-                        }
-                        foutCar.close();
-                    }
-                }
+        shared_ptr<string> nazv{new string{""}};
+        cin >> *nazv;
+        shared_ptr<string> nam{new string{""}};
+        shared_ptr<string> aval{new string{""}};
+        shared_ptr<string> deliv{new string{""}};
+        shared_ptr<double> age{new double{0}};
+        shared_ptr<string> typeOfVehicle{new string{""}};
+        while (finE >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle) {
+            cout << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle << " " << endl;
+
+            if (*nam == *nazv) {
+                Vehicle vehic(*nam, *typeOfVehicle, *age, *aval, *deliv);
+                ofstream foutCar(R"(C:\Oop143\Laba_4\Purchase.txt)",
+                                 ios_base::app);
+                foutCar << vehic << "\t" << endl;
             }
-            finE.close();
         }
-    }
-    while (false)
-    cerr<<"ERROR";
+    finE.close();
 }
+//                ifstream finCar(R"("C:\Oop143\Laba_4\Purchase.txt)");
+//
+//                shared_ptr<string> nam{new string{""}};
+//                shared_ptr<string> aval{new string{""}};
+//                shared_ptr<string> deliv{new string{""}};
+//                shared_ptr<double> age{new double{0.0}};
+//                shared_ptr<string> typeOfVehicle{new string{""}};
+//                while(finCar >> *nam >> *deliv >> *aval >> *age >> *typeOfVehicle){
+//                    cout << *nam << "\t" << *deliv << "\t" << *aval << "\t" << *age << "\t" << *typeOfVehicle << "\t" << endl;
+//                }
+//                finE.close();
+                //                    foutCar.close();
+                //                    vector<int> numbers;
+                //                    ifstream finCar
+                //                            (R"(C:\Oop143\Laba_4\Purchase.txt)");
+                //                    while (finCar  >> *nam >> *aval >> *deliv >> *age >> *typeOfVehicle)
+                //                        cout  << *nam << " " << *aval << " " << *deliv << " " << *age << " " << *typeOfVehicle << " " << endl;
+                //                    if (!finCar.is_open())
+                //                        cerr << "Error.";
+//            }
+//            finE.close();
+//                    else {
+////                        while (finCar >> *nam >> *aval >> *age >> *aval >> *deliv) {
+////                            numbers.push_back(*nazv);
+////                        }
+////                        Vehicle vehic(*nam, *typeOfVehicle, *age, *aval, *deliv);
+////                        ofstream foutCar(R"("C:\Oop143\Laba_4\Purchase.txt)");
+////                        for (int i = 0; i < numbers.size(); ++i) {
+////                            if (numbers[i] == *nazv) {
+////                                foutCar << numbers[i] << endl;
+////                            } else {
+////                                foutCar << vehic << "\t" << endl;
+////                                ofstream foutPur(R"(C:\Oop143\Laba_4\Purchase.txt)", ios_base::app);
+////                                foutPur << numbers[i] << "\t" << endl;
+////                            }
+////                            foutCar << vehic << "\t" << endl;
+////                            foutCar.close();
+//                        }
+//                        foutCar.close();
+//        }
+
+
+//}
+
+
+            //finE.close();
+
+
 
 
 

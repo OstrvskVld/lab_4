@@ -53,7 +53,6 @@ int main() {
                                 choice != 'E')
                                 throw WrongType();
                             else {
-                                while (true) {
                                     switch (choice) {
                                         case 'A' : { //Add VEHICLE
                                             AddVehicle(vehicle);
@@ -69,12 +68,12 @@ int main() {
                                         }
                                         case 'D' : {//Show information of vehicle
                                             ReadVehicle(vehicle);
+                                            break;
                                         }
                                         case 'E' : {//Exit
                                             return 0;
                                         }
 
-                                    }
                                 }
                             }
                         }
@@ -114,9 +113,11 @@ int main() {
                     switch (choice) {
                         case 'A' : {
                             ReadVehicle(vehicle);
+                            break;
                         }
                         case 'B' :{
                             BuyACar(vehicle);
+                            break;
                         }
 
                         case 'Q' : {
