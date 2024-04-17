@@ -128,6 +128,7 @@ void BuyACar(Vehicle &vehicle) {
                 ofstream foutCar(R"(C:\Oop143\Laba_4\Purchase.txt)",
                                  ios_base::app);
                 foutCar << vehic << "\t" << endl;
+                break;
             }
         }
     finE.close();
